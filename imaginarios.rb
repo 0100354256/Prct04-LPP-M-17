@@ -1,34 +1,34 @@
 class Complejo
-  
   attr_reader :a, :b
   
   def initialize (a, b)
-    
-    @a = a	# Racional
-    @b = b	# Imaginario
-    
+    @a = a  # Racional
+    @b = b  # Imaginario
   end
 
-  def to_s	# Devuelve una cadena con la representación del racional
-    "#{@a} + #{@b}i"
+  def to_s  # Devuelve una cadena con la representación del racional
+    if(b>0)
+      "#{@a} +#{@b}i"
+    elsif(b<0)
+      "#{@a} #{@b}i"
+    else
+      "#{@a}"
+    end
   end
 
-  def suma (other)	# Devuelve un nuevo complejo que suma al objeto que invoca el que le pasan como parámetro
-    @a = @a + other.a
-    @b = @b + other.b
-    self.to_s 	# Resultado como cadena
+  def suma (other)  # Devuelve un nuevo complejo que suma al objeto que invoca el que le pasan como parámetro
+    result = Complejo.new(@a + other.a, @b + other.b)
   end
 
-  def resta (other)	# Devuelve un nuevo complejo que resta al objeto que invoca el que le pasan como parámetro
-    @a = @a - other.a
-    @b = @b - other.b
-    self.to_s 	# Resultado como cadena
+  def resta (other)  # Devuelve un nuevo complejo que resta al objeto que invoca el que le pasan como parámetro
+    result = Complejo.new(@a - other.a, @b - other.b)
   end
 
-  def mult (other)	# Devuelve un nuevo complejo que resta al objeto que invoca el que le pasan como parámetro
-    aux = @a
-    @a = ((@a * other.a) - (@b * other.b))
-    @b = ((@b * other.a) + (aux * other.b))
-    self.to_s 	# Resultado como cadena
+  def mult (other)  # Devuelve un nuevo complejo que resta al objeto que invoca el que le pasan como parámetro
+    result = Complejo.new(((@a * other.a) - (@b * other.b)), ((@b * other.a) + (@a * other.b)))
+  end
+
+  def div (other)
+    result = Complejo.new((((@a * other.a) + (@b * other.b)).to_f / ((other.a * other.a) + (other.b * other.b))), (((@b * other.a) - (@a * other.b)).to_f / ((other.a * other.a) + (other.b * other.b))))
   end
 end
