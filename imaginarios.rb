@@ -24,4 +24,11 @@ class Complejo
     @b = @b - other.b
     self.to_s 	# Resultado como cadena
   end
+
+  def mult (other)	# Devuelve un nuevo complejo que resta al objeto que invoca el que le pasan como parámetro
+    aux = @a
+    @a = ((@a * other.a) - (@b * other.b))
+    @b = ((@b * other.a) + (aux * other.b))
+    self.to_s 	# Resultado como cadena
+  end
 end
