@@ -31,4 +31,8 @@ class Complejo
   def div (other)
     result = Complejo.new((((@a * other.a) + (@b * other.b)).to_f / ((other.a * other.a) + (other.b * other.b))), (((@b * other.a) - (@a * other.b)).to_f / ((other.a * other.a) + (other.b * other.b))))
   end
+
+  def escalar (num)
+    result = Complejo.new(@a * num, @b * num)
+  end
 end
